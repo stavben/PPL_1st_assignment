@@ -1,0 +1,6 @@
+export const findResult = <T>(pred: (x: T) => boolean, a: T[]):T=> {
+    let b : T[] = a.filter(item => {return pred(item)});
+    if (b.length==0)
+    throw "No element found.";
+    else return b[0];
+}
