@@ -1,0 +1,22 @@
+//q1
+
+
+export const findResult = <T>(pred: (x: Result<T>) => boolean, a: Result<T>[]):Result<T>=> {
+    let b : Result<T>[] = a.filter(item => {return pred(item)});
+    if (b.length==0)
+    return makeFailure("No element found.");
+    else return b[0];
+}
+
+
+
+//q2
+
+export const returnSquaredIfFoundEven_v2 =(a: Result<number>[]): Result<number> => {
+     try {
+         let r= bind(findResult(  x => isOk(x) && x.value % 2 === 0, a),y=>makeOk(y*y));
+         return r;
+    } catch (e) {
+        return makeFailure("No element found.");
+    }
+}
